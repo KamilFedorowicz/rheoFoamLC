@@ -1,0 +1,23 @@
+  // wall of the bend      
+wall2
+	{
+                type            codedMixed;
+                refValue        uniform (1 0 0); 
+                refGradient     uniform (0 0 0);
+                valueFraction   uniform 1;
+
+
+        redirectType homeotropicAnchoring; // name of generated BC
+        code
+                #{
+    // Get range and orientation
+    boundBox bb(patch().patch().localPoints(), true);
+
+	//compute wall-normal vector in the bend
+	const vectorField n = patch().nf();
+	// prescribe the wall-normal boundary condition
+        this -> refValue()=-n;
+
+                #};
+        }
+

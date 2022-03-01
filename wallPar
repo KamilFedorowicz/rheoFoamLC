@@ -1,0 +1,39 @@
+// bend
+    wall2
+	{
+                type            codedMixed;
+                refValue        uniform (1 0 0); 
+                refGradient     uniform (0 0 0); 
+                valueFraction   uniform 1;
+
+
+        redirectType wallParallelAnchoring; // name of generated BC
+        code
+            	#{
+    // Get range and orientation
+    boundBox bb(patch().patch().localPoints(), true);
+	const vectorField& c = patch().Cf();
+
+	scalar cx(1e-2); // x coordinate of the bend axis
+	scalar cy(5e-3); // y coordinate of the bend axis
+
+	vector ux(1, 0, 0); // unit vector in the x-direction
+        vector uy(0, 1, 0);
+	vector uz(0, 0, 1);
+	      
+const vectorField normal = patch().nf();
+
+// this expression calculates a unit vector normal to 
+// R (radial vector from the bend axis) with a zero component
+// along the z-direction
+        this -> refValue()=-ux* ( (c&uy)- cy )/sqrt( pow( (c&uy)- cy,2) + 
+pow( (c&ux) - cx,2) ) + uy* ( (c&ux) - cx )/sqrt( pow( (c&uy)- cy,2) 
++ pow( (c&ux) - cx,2) ) ;
+                #};
+        }
+
+}
+
+// ************************************************************************* //
+
+
