@@ -9,8 +9,3 @@ while in tensorial models, the microstructure is described through the vb{Q}-ten
 Finally, the specific form of the constitutive equation is contained in the object LE_1constant, 
 where the director evolution equation and stress definition are specified.
 
-For the homeotropic boundary condition we use the \patch( ).nf( ) function, 
-which computes the wall-normal vector and prescribes it on the wall.
-
-The wall-parallel boundary condition in the bend is more complex and requires a dedicated code,
-which is given in the file wallPar.
