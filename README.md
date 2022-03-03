@@ -12,6 +12,6 @@ velocity, pressure, microstructure and stress.
 The latter two fields are specified through the constitutiveModel2 object.
 
 The exact form of the constitutive equation is specified in a dedicated file;
-look for the LE_1constant folder in other repository to see an example.
+look for the LE_model folder in other repository to see an example.
 
 
